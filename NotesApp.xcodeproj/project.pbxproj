@@ -18,6 +18,13 @@
 		9FA4FF982B96B006000AF902 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF972B96B006000AF902 /* NotesViewController.swift */; };
 		9FA4FF9A2B96B017000AF902 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF992B96B017000AF902 /* NotesViewModel.swift */; };
 		9FA4FF9C2B96B025000AF902 /* NotesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF9B2B96B025000AF902 /* NotesCoordinator.swift */; };
+		F884055D2B96C0F900DF1F55 /* NotesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884055C2B96C0F900DF1F55 /* NotesCollectionView.swift */; };
+		F884055F2B96C11800DF1F55 /* NotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884055E2B96C11800DF1F55 /* NotesCollectionViewCell.swift */; };
+		F88405622B96C46200DF1F55 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88405612B96C46200DF1F55 /* TaskModel.swift */; };
+		F88405642B96C58900DF1F55 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88405632B96C58900DF1F55 /* Status.swift */; };
+		F88405662B96C59A00DF1F55 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88405652B96C59A00DF1F55 /* Priority.swift */; };
+		F88405692B96CAAC00DF1F55 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88405682B96CAAC00DF1F55 /* DataBase.swift */; };
+		F884056B2B96CDDB00DF1F55 /* DataBaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884056A2B96CDDA00DF1F55 /* DataBaseKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +41,13 @@
 		9FA4FF972B96B006000AF902 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		9FA4FF992B96B017000AF902 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		9FA4FF9B2B96B025000AF902 /* NotesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoordinator.swift; sourceTree = "<group>"; };
+		F884055C2B96C0F900DF1F55 /* NotesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionView.swift; sourceTree = "<group>"; };
+		F884055E2B96C11800DF1F55 /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
+		F88405612B96C46200DF1F55 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		F88405632B96C58900DF1F55 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		F88405652B96C59A00DF1F55 /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		F88405682B96CAAC00DF1F55 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		F884056A2B96CDDA00DF1F55 /* DataBaseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +105,42 @@
 		9FA4FF962B96AFBC000AF902 /* NotesView */ = {
 			isa = PBXGroup;
 			children = (
+				F88405672B96CA8B00DF1F55 /* DataBase */,
+				F88405602B96C43F00DF1F55 /* Model */,
 				9FA4FF972B96B006000AF902 /* NotesViewController.swift */,
+				F884055B2B96C0AD00DF1F55 /* Notes */,
 				9FA4FF992B96B017000AF902 /* NotesViewModel.swift */,
 				9FA4FF9B2B96B025000AF902 /* NotesCoordinator.swift */,
 			);
 			path = NotesView;
+			sourceTree = "<group>";
+		};
+		F884055B2B96C0AD00DF1F55 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				F884055C2B96C0F900DF1F55 /* NotesCollectionView.swift */,
+				F884055E2B96C11800DF1F55 /* NotesCollectionViewCell.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		F88405602B96C43F00DF1F55 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F88405612B96C46200DF1F55 /* TaskModel.swift */,
+				F88405632B96C58900DF1F55 /* Status.swift */,
+				F88405652B96C59A00DF1F55 /* Priority.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F88405672B96CA8B00DF1F55 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				F88405682B96CAAC00DF1F55 /* DataBase.swift */,
+				F884056A2B96CDDA00DF1F55 /* DataBaseKeys.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,14 +214,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F884056B2B96CDDB00DF1F55 /* DataBaseKeys.swift in Sources */,
 				9FA4FF822B96ACAC000AF902 /* ViewController.swift in Sources */,
 				9FA4FF9A2B96B017000AF902 /* NotesViewModel.swift in Sources */,
 				9FA4FF7E2B96ACAC000AF902 /* AppDelegate.swift in Sources */,
 				9FA4FF982B96B006000AF902 /* NotesViewController.swift in Sources */,
+				F88405692B96CAAC00DF1F55 /* DataBase.swift in Sources */,
+				F88405622B96C46200DF1F55 /* TaskModel.swift in Sources */,
 				9FA4FF952B96AD1F000AF902 /* AppCoordinator.swift in Sources */,
+				F884055D2B96C0F900DF1F55 /* NotesCollectionView.swift in Sources */,
 				9FA4FF802B96ACAC000AF902 /* SceneDelegate.swift in Sources */,
 				9FA4FF9C2B96B025000AF902 /* NotesCoordinator.swift in Sources */,
+				F884055F2B96C11800DF1F55 /* NotesCollectionViewCell.swift in Sources */,
+				F88405662B96C59A00DF1F55 /* Priority.swift in Sources */,
 				9FA4FF932B96ACD2000AF902 /* Utils.swift in Sources */,
+				F88405642B96C58900DF1F55 /* Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
