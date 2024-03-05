@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+class NotesViewModel{
+    var coordinator: NotesCoordinator!
+}
+    
