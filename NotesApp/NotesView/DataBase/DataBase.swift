@@ -8,19 +8,37 @@
 import Foundation
 
 class DataBase{
-
-  func putTask(task : TaskModel){
-    UserDefaults.standard.putData(object: task, key: DataBaseKeys.PUT.rawValue)
-  }
-  
-  func getTask() -> [TaskModel]{
-    if let tasks = UserDefaults.standard.getData(type: [TaskModel].self, key: DataBaseKeys.GET.rawValue){
-      return tasks
+var tasks = [TaskModel]()
+    init(){
+        updateLocalTasks()
     }
-    return []
+    func updateLocalTasks(){
+        if let tasks = UserDefaults.standard.getData(type: [TaskModel].self, key: DataBaseKeys.GET.rawValue){
+            self.tasks = tasks
+        }
+    }
+    
+  func putTask(task : TaskModel){
+      tasks.append(task)
+    UserDefaults.standard.putData(object: tasks, key: DataBaseKeys.PUT.rawValue)
+      
   }
   
-  
+  func getTasks() -> [TaskModel]{
+      return self.tasks
+  }
+    func deleteteTask(task: TaskModel){
+        if let index = tasks.firstIndex(where: {$0.id == task.id}){
+            tasks.remove(at: index)
+            UserDefaults.standard.putData(object: tasks, key: DataBaseKeys.PUT.rawValue)
+        }
+    }
+    func editTask(task: TaskModel){
+        if let index = tasks.firstIndex(where: {$0.id == task.id}){
+            tasks[index] = task
+            UserDefaults.standard.putData(object: tasks, key: DataBaseKeys.PUT.rawValue)
+        }
+    }
 }
 extension UserDefaults{
   func putData<T:Encodable>(object : T, key : String){

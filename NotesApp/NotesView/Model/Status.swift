@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Status{
+public enum Status: String, Codable {
   case Pendiente
   case EnProceso
   case Finalizada
