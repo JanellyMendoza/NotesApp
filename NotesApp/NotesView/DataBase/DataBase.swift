@@ -18,28 +18,54 @@ var tasks = [TaskModel]()
         }
     }
     
-  func putTask(task : TaskModel){
+  func saveTask(task : TaskModel){
       tasks.append(task)
-    UserDefaults.standard.putData(object: tasks, key: DataBaseKeys.PUT.rawValue)
-      
+      putTask(task: task)
   }
   
   func getTasks() -> [TaskModel]{
       return self.tasks
   }
     func deleteteTask(task: TaskModel){
-        if let index = tasks.firstIndex(where: {$0.id == task.id}){
+        /*if let index = tasks.firstIndex(where: {$0.id == task.id}){
             tasks.remove(at: index)
             UserDefaults.standard.putData(object: tasks, key: DataBaseKeys.PUT.rawValue)
-        }
+        }*/
+        
+        let index = getIndex(task: task)
+        if index != -1{
+            tasks.remove(at: index)
+            putTask(task: task)}else{
+                print("No se puede eliminar el index seleccionado")
+            }
     }
     func editTask(task: TaskModel){
-        if let index = tasks.firstIndex(where: {$0.id == task.id}){
+        /*if let index = tasks.firstIndex(where: {$0.id == task.id}){
             tasks[index] = task
             UserDefaults.standard.putData(object: tasks, key: DataBaseKeys.PUT.rawValue)
+        }*/
+        
+        let index = getIndex(task: task)
+        if index != -1{
+            tasks[index] = task
+            putTask(task: task)} else{
+                print("No se puede editar el index seleccionado")
+            }
+    }
+    
+    func getIndex(task : TaskModel) -> Int{
+        if let index = tasks.firstIndex(where: {$0.id == task.id}){
+            return index
+        }else{
+            return -1
         }
     }
+    
+    func putTask(task : TaskModel){
+        UserDefaults.standard.putData(object: tasks, key: DataBaseKeys.PUT.rawValue)
+    }
 }
+
 extension UserDefaults{
   func putData<T:Encodable>(object : T, key : String){
     let jsonEoncoder = JSONEncoder()
@@ -62,5 +88,4 @@ extension UserDefaults{
       return nil
     }
   }
-  //hhhhh
 }
