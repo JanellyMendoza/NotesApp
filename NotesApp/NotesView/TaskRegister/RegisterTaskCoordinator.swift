@@ -21,7 +21,7 @@ class RegisterTaskCoordinator: Coordinator{
         let viewModel = RegisterTaskViewModel()
         viewModel.coordinator = self
         view.viewModel = viewModel
-        navigationController.setViewControllers([view], animated: true)
+        navigationController.pushViewController(view, animated: true)
     }
     
     

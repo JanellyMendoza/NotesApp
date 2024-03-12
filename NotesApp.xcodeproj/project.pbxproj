@@ -113,10 +113,10 @@
 			children = (
 				F88405672B96CA8B00DF1F55 /* DataBase */,
 				F88405602B96C43F00DF1F55 /* Model */,
-				9FA4FF972B96B006000AF902 /* NotesViewController.swift */,
 				F884055B2B96C0AD00DF1F55 /* Notes */,
 				9FA4FF992B96B017000AF902 /* NotesViewModel.swift */,
 				9FA4FF9B2B96B025000AF902 /* NotesCoordinator.swift */,
+				9FA4FF972B96B006000AF902 /* NotesViewController.swift */,
 				9FB03E6D2B9FE63F007D67E6 /* TaskRegister */,
 			);
 			path = NotesView;

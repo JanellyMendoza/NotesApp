@@ -24,6 +24,9 @@ class NotesCoordinator: Coordinator {
     }
   
   func goToRegister(){
+      let coordinatorRegister = RegisterTaskCoordinator(navigationController: navigationController)
+      childCoordinator.append(coordinatorRegister)
+      coordinatorRegister.startCoordinator()
   }
     
     

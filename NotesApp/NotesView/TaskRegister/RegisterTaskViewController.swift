@@ -65,11 +65,30 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
+        initUI()
+        setupNavigation()
+        let backButton = UIBarButtonItem()
+            backButton.title = "Atrás"
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupNavigation()
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationItem.hidesBackButton = false
+        let backButton = UIBarButtonItem()
+            backButton.title = "Atrás"
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
+    func setupNavigation(){
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .cyan
+        self.navigationController?.navigationBar.standardAppearance = appearance;
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+    }
+    
     func initUI(){
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
@@ -78,10 +97,10 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     @objc func saveTask(){
         
     }
-    func validateData() -> TaskModel?{
+    //func validateData() -> TaskModel?{
        // guard let name = textFieldUser.text, !name.isEmpty else { return nil }
        // guard let dateRegister =
-    }
+    //}
 }
 extension RegisterTaskViewController {
     
