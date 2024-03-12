@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Priority: String, Codable {
+public enum Priority: String, Codable, CaseIterable {
   case Low
   case Medium
   case High

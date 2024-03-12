@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 struct TaskModel : Codable {
-    var nameUser : String?
     var nameTask : String?
     var Description : String?
     var color : String?
@@ -19,7 +18,10 @@ struct TaskModel : Codable {
     var priority : Priority?
     var id : Int?
     
+<<<<<<< HEAD
     //Hola
+=======
+>>>>>>> Dev
     }
 
 
