@@ -9,12 +9,15 @@ import UIKit
 
 class NotesCollectionView: UIView{
 
+  let dataBase = DataBase.shared
+  
+  var dataWorks = [TaskModel]()
 
   var collectionView : UICollectionView = {
     var layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
-    layout.minimumLineSpacing = 0
-    layout.minimumInteritemSpacing = 0
+    layout.minimumLineSpacing = 5
+    layout.minimumInteritemSpacing = 5
     
     var collection  = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collection.backgroundColor = .white
@@ -41,6 +44,10 @@ class NotesCollectionView: UIView{
     collectionView.addAnchorsWithMargin(0)
   }
   
+  func getData(){
+    
+  }
+  
 }
 
 extension NotesCollectionView : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -49,16 +56,18 @@ extension NotesCollectionView : UICollectionViewDataSource, UICollectionViewDele
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    <#code#>
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! NotesCollectionViewCell
+    
+    return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    <#code#>
+    return CGSize(width: width - 20, height: height / 4)
   }
   
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    <#code#>
-  }
+ /* func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+  }*/
   
   
 }
