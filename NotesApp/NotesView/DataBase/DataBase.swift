@@ -8,6 +8,8 @@
 import Foundation
 
 class DataBase{
+  static let shared = DataBase()
+  
 var tasks = [TaskModel]()
     init(){
         updateLocalTasks()

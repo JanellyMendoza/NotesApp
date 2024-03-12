@@ -9,5 +9,9 @@ import Foundation
 
 class NotesViewModel{
     var coordinator: NotesCoordinator!
+  
+  func goToRegister(){
+    coordinator.goToRegister()
+  }
 }
     

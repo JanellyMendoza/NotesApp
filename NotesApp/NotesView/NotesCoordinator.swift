@@ -22,6 +22,9 @@ class NotesCoordinator: Coordinator {
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: true)
     }
+  
+  func goToRegister(){
+  }
     
     
 }
