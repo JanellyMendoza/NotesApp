@@ -10,7 +10,7 @@ import UIKit
 class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var viewModel: RegisterTaskViewModel!
-    
+    var priorityValidate: Priority? = nil
     
     var titleLabel : UILabel = {
         var label = UILabel()
@@ -29,6 +29,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     var dateRegister: UIDatePicker = {
         var datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        //region
         datePicker.locale = Locale.current
         datePicker.backgroundColor = .blue
         return datePicker
@@ -93,14 +94,33 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
         
+        view.addSubview(priorityPicker)
+        priorityPicker.addAnchorsAndCenter(centerX: <#T##Bool?#>, centerY: <#T##Bool?#>, width: <#T##CGFloat?#>, height: <#T##CGFloat?#>, left: <#T##CGFloat?#>, top: <#T##CGFloat?#>, right: <#T##CGFloat?#>, bottom: <#T##CGFloat?#>)
+        
     }
     @objc func saveTask(){
         
     }
-    //func validateData() -> TaskModel?{
-       // guard let name = textFieldUser.text, !name.isEmpty else { return nil }
-       // guard let dateRegister =
-    //}
+    func validateInfo() -> Bool{
+        guard let name = textFieldNameTask.text, !name.isEmpty else { return false }
+        //guard let dateRegister = dateRegister.is
+        guard let description = descriptionTextView.text, !description.isEmpty else {return false}
+        if priorityValidate != nil {
+            return true
+        }
+        return true
+    }
+    func validateIntervalDate(date : Date) -> Bool{
+       var componentsMin = DateComponents()
+       componentsMin.minute = 5
+        let minDate : Date = Calendar.current.date(from: componentsMin) ?? Date.now
+        
+        if date > minDate {
+          return true
+        }
+        
+        return false
+      }
 }
 extension RegisterTaskViewController {
     
@@ -116,6 +136,10 @@ extension RegisterTaskViewController {
         return Priority.allCases[row].rawValue
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let prioritySelected = Priority.allCases[row]
+           priorityValidate = prioritySelected
+            
         print("seleccionaste \(row)")
+        
     }
 }
