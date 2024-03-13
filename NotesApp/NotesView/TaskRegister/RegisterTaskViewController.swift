@@ -62,7 +62,11 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         button.layer.cornerRadius = 25
         return button
     }()
-    
+    var textFieldPriority : UITextField = {
+        var textField = UITextField()
+        textField.backgroundColor = .white
+        return textField
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
@@ -93,10 +97,18 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     func initUI(){
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
+        let tap = UITapGestureRecognizer(target: self , action: #selector(showPriorityPicker))
+        textFieldPriority.addGestureRecognizer(tap)
+        view.addSubview(textFieldPriority)
+        textFieldPriority.addAnchorsAndCenter(centerX: true, centerY: false, width: 100, height: 50, left: nil, top: 100, right: nil, bottom: nil)
         
+        
+    }
+    @objc func showPriorityPicker(){
         view.addSubview(priorityPicker)
-        priorityPicker.addAnchorsAndCenter(centerX: <#T##Bool?#>, centerY: <#T##Bool?#>, width: <#T##CGFloat?#>, height: <#T##CGFloat?#>, left: <#T##CGFloat?#>, top: <#T##CGFloat?#>, right: <#T##CGFloat?#>, bottom: <#T##CGFloat?#>)
+        priorityPicker.addAnchorsAndCenter(centerX: true, centerY: false, width: width, height: height / 3, left: nil, top: 30, right: nil, bottom: nil, withAnchor: .top, relativeToView: textFieldPriority)
         
+        print("show")
     }
     @objc func saveTask(){
         
@@ -138,8 +150,8 @@ extension RegisterTaskViewController {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let prioritySelected = Priority.allCases[row]
            priorityValidate = prioritySelected
-            
+        textFieldPriority.text = priorityValidate?.rawValue
         print("seleccionaste \(row)")
-        
+        priorityPicker.isHidden = true
     }
 }
