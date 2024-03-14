@@ -20,9 +20,29 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         label.font = UIFont(name: "Arial Bold Italic", size: 28)
         return label
     }()
+    var addDescription : UILabel = {
+        var label = UILabel()
+        label.text = "Write anything"
+        label.textColor = .systemYellow
+        label.textAlignment = .center
+        label.font = UIFont(name: "Arial Bold Italic", size: 15)
+        return label
+    }()
+    var addDate : UILabel = {
+        var label = UILabel()
+        label.text = "Write anything"
+        label.textColor = .systemYellow
+        label.textAlignment = .center
+        label.font = UIFont(name: "Arial Bold Italic", size: 15)
+        return label
+    }()
+
+    
     var textFieldNameTask : UITextField = {
         var textField = UITextField()
         textField.placeholder = "Name of your Task"
+        textField.textColor = .black
+        textField.font = UIFont(name: "Arial Bold Italic", size: 15)
         textField.backgroundColor = .white
         return textField
     }()
@@ -64,6 +84,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     }()
     var textFieldPriority : UITextField = {
         var textField = UITextField()
+        textField.placeholder = "Select your priority"
         textField.backgroundColor = .white
         return textField
     }()
@@ -99,9 +120,27 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         priorityPicker.dataSource = self
         let tap = UITapGestureRecognizer(target: self , action: #selector(showPriorityPicker))
         textFieldPriority.addGestureRecognizer(tap)
-        view.addSubview(textFieldPriority)
-        textFieldPriority.addAnchorsAndCenter(centerX: true, centerY: false, width: 100, height: 50, left: nil, top: 100, right: nil, bottom: nil)
         
+        view.addSubview(titleLabel)
+        titleLabel.addAnchorsAndCenter(centerX: true, centerY: false, width: width, height: 30, left: nil, top: 15, right: nil, bottom: nil)
+        
+        view.addSubview(textFieldNameTask)
+        textFieldNameTask.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 15, right: nil, bottom: nil, withAnchor: .top, relativeToView: titleLabel)
+        
+        
+        
+        view.addSubview(addDescription)
+        addDescription.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: textFieldNameTask)
+        
+        view.addSubview(descriptionTextView)
+        descriptionTextView.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 80, left: nil, top: 15, right: nil, bottom: nil,withAnchor: .top, relativeToView: addDescription)
+        
+        view.addSubview(textFieldPriority)
+        textFieldPriority.addAnchorsAndSize(width: 70, height: 40, left: 15, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: descriptionTextView)
+        
+      
+        
+        //view.addSubview(dateFinish)
         
     }
     @objc func showPriorityPicker(){
