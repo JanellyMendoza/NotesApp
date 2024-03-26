@@ -10,7 +10,6 @@ import UIKit
 class NotesViewController: UIViewController {
   var viewModel : NotesViewModel!
   
-  
   var menuView = MenuView()
   
   var barHome : BarHomeView = {
@@ -55,8 +54,8 @@ class NotesViewController: UIViewController {
     view.backgroundColor = .white
     initUI()
     setUpLateralMenu()
-    
   }
+    
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setupNavigation()
@@ -92,7 +91,7 @@ class NotesViewController: UIViewController {
     isMenuOpen = true
   }
   
-  func hideMenu(){
+  @objc func hideMenu(){
     UIView.animate(withDuration: 0.3, animations: {
       self.menuView.frame.origin.x = -self.menuWidth
     })
@@ -132,9 +131,11 @@ class NotesViewController: UIViewController {
     }
   }
   
-  
-  
+    
   func initUI(){
+      
+    barHome.delegate = self
+      
     view.addSubview(barHome)
     barHome.addAnchorsAndSize(width: nil, height: 50, left: 0, top: 0, right: 0, bottom: nil)
     
@@ -148,10 +149,24 @@ class NotesViewController: UIViewController {
     
     view.addSubview(collectionViewNotes)
     collectionViewNotes.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 20, height: height - 100, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: notesLabel)
+      
+    let tap = UITapGestureRecognizer(target: self, action: #selector(hideMenu))
+    view.addGestureRecognizer(tap)
   }
+    
   
   @objc func goToRegister(){
     viewModel.goToRegister()
   }
   
+}
+
+extension NotesViewController : BarHomeViewDelegate{
+    func tapInMenu() {
+        if !isMenuOpen {
+            showMenu()
+        }else{
+            hideMenu()
+        }
+    }
 }
