@@ -11,6 +11,8 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     var viewModel: RegisterTaskViewModel!
     var priorityValidate: Priority? = nil
+  
+  var bandera = false
     
     var titleLabel : UILabel = {
         var label = UILabel()
@@ -152,6 +154,7 @@ extension RegisterTaskViewController {
            priorityValidate = prioritySelected
         textFieldPriority.text = priorityValidate?.rawValue
         print("seleccionaste \(row)")
+        bandera = true
         priorityPicker.isHidden = true
     }
 }
