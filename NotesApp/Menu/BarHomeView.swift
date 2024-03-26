@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 
 
+protocol BarHomeViewDelegate {
+    func tapInMenu ()
+}
+
 class BarHomeView : UIView{
-  
+    
+    var delegate : BarHomeViewDelegate?
   
   var menuIcon : UIImageView = {
     var image = UIImageView()
@@ -24,7 +29,6 @@ class BarHomeView : UIView{
   
   init(){
     super.init(frame: .zero)
-  
     initUI()
     
   }
@@ -39,7 +43,9 @@ class BarHomeView : UIView{
   }
   
   @objc func tapInMenu(){
-    print("Show or Hide Menu")
+    //print("Show or Hide Menu")
+    delegate?.tapInMenu()
+    
   }
   
   required init?(coder: NSCoder) {
