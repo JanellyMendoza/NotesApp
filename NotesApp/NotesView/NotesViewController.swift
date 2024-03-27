@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Lottie
 
 class NotesViewController: UIViewController {
   var viewModel : NotesViewModel!
   
   var menuView = MenuView()
+  
   
   var barHome : BarHomeView = {
     var bar = BarHomeView()
@@ -46,6 +48,13 @@ class NotesViewController: UIViewController {
     return collection
   }()
   
+  var lottieHamburguer : LottieAnimationView = {
+    var lottie = LottieAnimationView()
+    lottie.tintColor = .black
+    
+    return lottie
+  }()
+  
   var menuWidth = 250.0
   var isMenuOpen : Bool = false
   
@@ -55,7 +64,7 @@ class NotesViewController: UIViewController {
     initUI()
     setUpLateralMenu()
   }
-    
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setupNavigation()
@@ -78,6 +87,12 @@ class NotesViewController: UIViewController {
     
     menuView.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: height)
     view.addSubview(menuView)
+    setUpLottie()
+    let tap1 = UITapGestureRecognizer(target: self, action: #selector(lottieFunc))
+    lottieHamburguer.addGestureRecognizer(tap1)
+    barHome.addSubview(lottieHamburguer)
+    lottieHamburguer.addAnchorsAndSize(width: 150, height: 150, left: -45, top: -50, right: nil, bottom: nil)
+    
     
     
     let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_ :)))
@@ -85,19 +100,22 @@ class NotesViewController: UIViewController {
   }
   
   func showMenu(){
-    UIView.animate(withDuration: 0.3, animations: {
+    UIView.animate(withDuration: 0.3, animations: { [self] in
       self.menuView.frame.origin.x = 0
+      self.lottieHamburguer.frame.origin.x += menuWidth
     })
     isMenuOpen = true
+    lottieHamburguer.play(fromProgress: 0.0, toProgress: 0.45, loopMode: .none)
   }
   
   @objc func hideMenu(){
     UIView.animate(withDuration: 0.3, animations: {
       self.menuView.frame.origin.x = -self.menuWidth
+      self.lottieHamburguer.frame.origin.x -= self.menuWidth
     })
     isMenuOpen = false
+    lottieHamburguer.play(fromProgress: 0.5, toProgress: 1.0, loopMode: .none)
   }
-  
   
   @objc func handleSwipeGesture(_ gesture : UIPanGestureRecognizer){
     let gestureVelocity = gesture.velocity(in: view).x
@@ -131,11 +149,11 @@ class NotesViewController: UIViewController {
     }
   }
   
-    
+  
   func initUI(){
-      
+    
     barHome.delegate = self
-      
+    
     view.addSubview(barHome)
     barHome.addAnchorsAndSize(width: nil, height: 50, left: 0, top: 0, right: 0, bottom: nil)
     
@@ -149,24 +167,35 @@ class NotesViewController: UIViewController {
     
     view.addSubview(collectionViewNotes)
     collectionViewNotes.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 20, height: height - 100, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: notesLabel)
-      
+    
     let tap = UITapGestureRecognizer(target: self, action: #selector(hideMenu))
     view.addGestureRecognizer(tap)
+    
+  }
+  
+  func setUpLottie(){
+    lottieHamburguer = .init(name: "hamburguer")
   }
     
-  
   @objc func goToRegister(){
     viewModel.goToRegister()
   }
   
+  @objc func lottieFunc(){
+    tapInMenu()
+  }
+  
+  
 }
 
 extension NotesViewController : BarHomeViewDelegate{
-    func tapInMenu() {
-        if !isMenuOpen {
-            showMenu()
-        }else{
-            hideMenu()
-        }
+  func tapInMenu() {
+    if !isMenuOpen {
+      showMenu()
+      
+    }else{
+      hideMenu()
+     
     }
+  }
 }

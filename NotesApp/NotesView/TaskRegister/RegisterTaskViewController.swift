@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Lottie
 
 class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var viewModel: RegisterTaskViewModel!
     var priorityValidate: Priority? = nil
+  
+  var bandera = false
     
     var titleLabel : UILabel = {
         var label = UILabel()
@@ -88,6 +91,8 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         textField.backgroundColor = .white
         return textField
     }()
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
@@ -191,6 +196,7 @@ extension RegisterTaskViewController {
            priorityValidate = prioritySelected
         textFieldPriority.text = priorityValidate?.rawValue
         print("seleccionaste \(row)")
+        bandera = true
         priorityPicker.isHidden = true
     }
 }

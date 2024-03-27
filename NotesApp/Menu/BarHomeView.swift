@@ -29,7 +29,7 @@ class BarHomeView : UIView{
   
   init(){
     super.init(frame: .zero)
-    initUI()
+    //initUI()
     
   }
   
