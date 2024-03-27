@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7128C6F307A65BA5EC011070 /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C744BD775B9C5EE89AA4C13E /* Pods_NotesApp.framework */; };
 		9FA4FF7E2B96ACAC000AF902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF7D2B96ACAC000AF902 /* AppDelegate.swift */; };
 		9FA4FF802B96ACAC000AF902 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF7F2B96ACAC000AF902 /* SceneDelegate.swift */; };
 		9FA4FF822B96ACAC000AF902 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF812B96ACAC000AF902 /* ViewController.swift */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B7F4A1EA4DA00ED347FC263 /* Pods-NotesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.debug.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6A620F62AF14AEB565374754 /* Pods-NotesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.release.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.release.xcconfig"; sourceTree = "<group>"; };
 		9FA4FF7A2B96ACAC000AF902 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA4FF7D2B96ACAC000AF902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FA4FF7F2B96ACAC000AF902 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		9FB03E722B9FE703007D67E6 /* RegisterTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTaskCoordinator.swift; sourceTree = "<group>"; };
 		BF43DDD72BB263EB003A12D4 /* BarHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarHomeView.swift; sourceTree = "<group>"; };
 		BF86F7372BA2A395006B3157 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		C744BD775B9C5EE89AA4C13E /* Pods_NotesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F884055C2B96C0F900DF1F55 /* NotesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionView.swift; sourceTree = "<group>"; };
 		F884055E2B96C11800DF1F55 /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
 		F88405612B96C46200DF1F55 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
@@ -65,17 +69,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7128C6F307A65BA5EC011070 /* Pods_NotesApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202D241D5C9EE77F62FC3562 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B7F4A1EA4DA00ED347FC263 /* Pods-NotesApp.debug.xcconfig */,
+				6A620F62AF14AEB565374754 /* Pods-NotesApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		78834D8CDAFFB43197A59665 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C744BD775B9C5EE89AA4C13E /* Pods_NotesApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9FA4FF712B96ACAC000AF902 = {
 			isa = PBXGroup;
 			children = (
 				9FA4FF7C2B96ACAC000AF902 /* NotesApp */,
 				9FA4FF7B2B96ACAC000AF902 /* Products */,
+				202D241D5C9EE77F62FC3562 /* Pods */,
+				78834D8CDAFFB43197A59665 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FA4FF8E2B96ACAF000AF902 /* Build configuration list for PBXNativeTarget "NotesApp" */;
 			buildPhases = (
+				B814C2F98D9612B1DB086EDB /* [CP] Check Pods Manifest.lock */,
 				9FA4FF762B96ACAC000AF902 /* Sources */,
 				9FA4FF772B96ACAC000AF902 /* Frameworks */,
 				9FA4FF782B96ACAC000AF902 /* Resources */,
+				F33552C86EFBF50B49651C68 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +265,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B814C2F98D9612B1DB086EDB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NotesApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F33552C86EFBF50B49651C68 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NotesApp/Pods-NotesApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NotesApp/Pods-NotesApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NotesApp/Pods-NotesApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9FA4FF762B96ACAC000AF902 /* Sources */ = {
@@ -411,12 +479,14 @@
 		};
 		9FA4FF8F2B96ACAF000AF902 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B7F4A1EA4DA00ED347FC263 /* Pods-NotesApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R2PX2WMZ3M;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -424,7 +494,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,12 +510,14 @@
 		};
 		9FA4FF902B96ACAF000AF902 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A620F62AF14AEB565374754 /* Pods-NotesApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R2PX2WMZ3M;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -453,7 +525,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -90,6 +91,8 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         textField.backgroundColor = .white
         return textField
     }()
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
