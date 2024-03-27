@@ -12,7 +12,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
   var status : UILabel = {
     var label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .red
+    label.backgroundColor = SColors.verdeBoton
     
     return label
   }()
@@ -20,7 +20,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
   var priority : UILabel = {
     var label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .systemOrange
+    label.backgroundColor = SColors.grisMenu
     
     return label
   }()
@@ -29,7 +29,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
   var nameTask : UILabel = {
     var label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .red
+    label.backgroundColor = SColors.verdeBoton
     
     return label
   }()
@@ -37,7 +37,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
   var descriptions : UILabel = {
     var label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .blue
+    label.backgroundColor = SColors.grisMenu
     
     return label
   }()
@@ -45,7 +45,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
   var dateCreate : UILabel = {
     var label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .red
+    label.backgroundColor = SColors.verdeBoton
     
     return label
   }()
@@ -53,7 +53,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
   var dateFinish : UILabel = {
     var label = UILabel()
     label.textColor = .black
-    label.backgroundColor = .blue
+    label.backgroundColor = SColors.grisMenu
     
     return label
   }()
@@ -61,6 +61,8 @@ class NotesCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: .zero)
     self.backgroundColor = .clear
+    self.layer.borderColor = UIColor.black.cgColor
+    self.layer.borderWidth = 3
     initUI()
   }
   

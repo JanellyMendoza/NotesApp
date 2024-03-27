@@ -20,14 +20,14 @@ class NotesCollectionView: UIView{
     layout.minimumInteritemSpacing = 5
     
     var collection  = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collection.backgroundColor = .white
+    collection.backgroundColor = .clear
     
     return collection
   }()
   
   init(){
     super.init(frame: .zero)
-    self.backgroundColor = .blue
+    self.backgroundColor = .clear
     initUI()
   }
   
