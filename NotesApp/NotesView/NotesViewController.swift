@@ -23,7 +23,7 @@ class NotesViewController: UIViewController {
   var notesLabel : UILabel = {
     var label = UILabel()
     label.backgroundColor = .systemOrange
-    label.text = "NOTAS"
+    label.text = NSLocalizedString("hello", tableName: "Localizable", comment: "")
     label.textAlignment = .center
     label.textColor = .white
     label.clipsToBounds = true
@@ -63,6 +63,7 @@ class NotesViewController: UIViewController {
     view.backgroundColor = .white
     initUI()
     setUpLateralMenu()
+    createLocalNotification()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -147,6 +148,10 @@ class NotesViewController: UIViewController {
     default:
       break
     }
+  }
+  
+  func createLocalNotification(){
+    LocalNotificationManager.shared.scheduleNotification(title: "Tarea!", body: "Acuerdate de apagarle a los frijoles", timeInterval: 30, identifier: "tarea1")
   }
   
   
