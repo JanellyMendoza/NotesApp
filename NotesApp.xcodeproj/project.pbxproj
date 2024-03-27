@@ -24,6 +24,9 @@
 		9FB03E732B9FE703007D67E6 /* RegisterTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB03E722B9FE703007D67E6 /* RegisterTaskCoordinator.swift */; };
 		BF43DDD82BB263EB003A12D4 /* BarHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43DDD72BB263EB003A12D4 /* BarHomeView.swift */; };
 		BF86F7382BA2A396006B3157 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF86F7372BA2A395006B3157 /* MenuView.swift */; };
+		BFCA859F2BB3BC6900B7DEBC /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA859E2BB3BC6900B7DEBC /* LocalNotificationManager.swift */; };
+		BFCA85A12BB3BEEB00B7DEBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFCA85A02BB3BEEB00B7DEBC /* GoogleService-Info.plist */; };
+		BFCA85A62BB3C1A400B7DEBC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BFCA85A52BB3C1A400B7DEBC /* Localizable.xcstrings */; };
 		F884055D2B96C0F900DF1F55 /* NotesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884055C2B96C0F900DF1F55 /* NotesCollectionView.swift */; };
 		F884055F2B96C11800DF1F55 /* NotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884055E2B96C11800DF1F55 /* NotesCollectionViewCell.swift */; };
 		F88405622B96C46200DF1F55 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88405612B96C46200DF1F55 /* TaskModel.swift */; };
@@ -54,6 +57,11 @@
 		9FB03E722B9FE703007D67E6 /* RegisterTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTaskCoordinator.swift; sourceTree = "<group>"; };
 		BF43DDD72BB263EB003A12D4 /* BarHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarHomeView.swift; sourceTree = "<group>"; };
 		BF86F7372BA2A395006B3157 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		BFCA859E2BB3BC6900B7DEBC /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		BFCA85A02BB3BEEB00B7DEBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BFCA85A22BB3C13800B7DEBC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		BFCA85A32BB3C13900B7DEBC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BFCA85A52BB3C1A400B7DEBC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C744BD775B9C5EE89AA4C13E /* Pods_NotesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F884055C2B96C0F900DF1F55 /* NotesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionView.swift; sourceTree = "<group>"; };
 		F884055E2B96C11800DF1F55 /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -114,6 +122,8 @@
 		9FA4FF7C2B96ACAC000AF902 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				BFCA85A42BB3C16900B7DEBC /* LocalizableStrings */,
+				BFCA859D2BB3BC4800B7DEBC /* NotificationManagers */,
 				BF86F7362BA2A378006B3157 /* Menu */,
 				9FA4FF7D2B96ACAC000AF902 /* AppDelegate.swift */,
 				9FA4FF942B96AD1F000AF902 /* AppCoordinator.swift */,
@@ -124,6 +134,7 @@
 				9FA4FF832B96ACAC000AF902 /* Main.storyboard */,
 				9FA4FF862B96ACAF000AF902 /* Assets.xcassets */,
 				9FA4FF882B96ACAF000AF902 /* LaunchScreen.storyboard */,
+				BFCA85A02BB3BEEB00B7DEBC /* GoogleService-Info.plist */,
 				9FA4FF8B2B96ACAF000AF902 /* Info.plist */,
 			);
 			path = NotesApp;
@@ -168,6 +179,22 @@
 				BF43DDD72BB263EB003A12D4 /* BarHomeView.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		BFCA859D2BB3BC4800B7DEBC /* NotificationManagers */ = {
+			isa = PBXGroup;
+			children = (
+				BFCA859E2BB3BC6900B7DEBC /* LocalNotificationManager.swift */,
+			);
+			path = NotificationManagers;
+			sourceTree = "<group>";
+		};
+		BFCA85A42BB3C16900B7DEBC /* LocalizableStrings */ = {
+			isa = PBXGroup;
+			children = (
+				BFCA85A52BB3C1A400B7DEBC /* Localizable.xcstrings */,
+			);
+			path = LocalizableStrings;
 			sourceTree = "<group>";
 		};
 		F884055B2B96C0AD00DF1F55 /* Notes */ = {
@@ -242,6 +269,8 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				ja,
 			);
 			mainGroup = 9FA4FF712B96ACAC000AF902;
 			productRefGroup = 9FA4FF7B2B96ACAC000AF902 /* Products */;
@@ -259,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA4FF8A2B96ACAF000AF902 /* LaunchScreen.storyboard in Resources */,
+				BFCA85A62BB3C1A400B7DEBC /* Localizable.xcstrings in Resources */,
+				BFCA85A12BB3BEEB00B7DEBC /* GoogleService-Info.plist in Resources */,
 				9FA4FF872B96ACAF000AF902 /* Assets.xcassets in Resources */,
 				9FA4FF852B96ACAC000AF902 /* Main.storyboard in Resources */,
 			);
@@ -313,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFCA859F2BB3BC6900B7DEBC /* LocalNotificationManager.swift in Sources */,
 				F884056B2B96CDDB00DF1F55 /* DataBaseKeys.swift in Sources */,
 				9FA4FF822B96ACAC000AF902 /* ViewController.swift in Sources */,
 				9FA4FF9A2B96B017000AF902 /* NotesViewModel.swift in Sources */,
@@ -343,6 +375,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9FA4FF842B96ACAC000AF902 /* Base */,
+				BFCA85A22BB3C13800B7DEBC /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -351,6 +384,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9FA4FF892B96ACAF000AF902 /* Base */,
+				BFCA85A32BB3C13900B7DEBC /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -363,6 +397,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -426,6 +461,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -485,7 +521,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R2PX2WMZ3M;
+				DEVELOPMENT_TEAM = 6899DY74P7;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotesApp/Info.plist;
@@ -516,7 +552,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R2PX2WMZ3M;
+				DEVELOPMENT_TEAM = 6899DY74P7;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotesApp/Info.plist;

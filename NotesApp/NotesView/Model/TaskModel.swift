@@ -13,8 +13,8 @@ struct TaskModel : Codable {
     var Description : String?
     var color : String?
     var status : Status?
-    var dateCreate : String?
-    var dateFinish : String?
+    var dateCreate : Date?
+    var dateFinish : Date?
     var priority : Priority?
     var id : Int?
     
