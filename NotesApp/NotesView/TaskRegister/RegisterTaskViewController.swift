@@ -9,15 +9,16 @@ import UIKit
 import Lottie
 
 class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
+    var dateBase = DataBase.shared
     var viewModel: RegisterTaskViewModel!
     var priorityValidate: Priority? = nil
+    
   
   var bandera = false
     
     var titleLabel : UILabel = {
         var label = UILabel()
-        label.text = "Register"
+        label.text = "Registro"
         label.textColor = .systemYellow
         label.textAlignment = .center
         label.font = UIFont(name: "Arial Bold Italic", size: 28)
@@ -25,7 +26,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     }()
     var addDescription : UILabel = {
         var label = UILabel()
-        label.text = "Write anything"
+        label.text = " Agrega una descripción"
         label.textColor = .systemYellow
         label.textAlignment = .center
         label.font = UIFont(name: "Arial Bold Italic", size: 15)
@@ -33,17 +34,24 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     }()
     var addDate : UILabel = {
         var label = UILabel()
-        label.text = "Write anything"
+        label.text = "Fecha inicio"
         label.textColor = .systemYellow
         label.textAlignment = .center
         label.font = UIFont(name: "Arial Bold Italic", size: 15)
         return label
     }()
-
+    var addFinalDate : UILabel = {
+        var label = UILabel()
+        label.text = "Fecha término"
+        label.textColor = .systemYellow
+        label.textAlignment = .center
+        label.font = UIFont(name: "Arial Bold Italic", size: 15)
+        return label
+    }()
     
     var textFieldNameTask : UITextField = {
         var textField = UITextField()
-        textField.placeholder = "Name of your Task"
+        textField.placeholder = "Nombre de la tarea"
         textField.textColor = .black
         textField.font = UIFont(name: "Arial Bold Italic", size: 15)
         textField.backgroundColor = .white
@@ -55,6 +63,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         //region
         datePicker.locale = Locale.current
         datePicker.backgroundColor = .blue
+        datePicker.minimumDate = Date()
         return datePicker
     }()
     var dateFinish: UIDatePicker = {
@@ -62,6 +71,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         datePickerFinish .datePickerMode = .date
         datePickerFinish .locale = Locale.current
         datePickerFinish .backgroundColor = .blue
+        datePickerFinish.minimumDate = Date()
         return datePickerFinish
     }()
     
@@ -87,11 +97,19 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
     }()
     var textFieldPriority : UITextField = {
         var textField = UITextField()
-        textField.placeholder = "Select your priority"
+        textField.placeholder = "Prioridades"
         textField.backgroundColor = .white
         return textField
     }()
-  
+    var priorityLabel : UILabel = {
+        var label = UILabel()
+        label.text = "Selecciona la prioridad"
+        label.textColor = .systemYellow
+        label.textAlignment = .center
+        label.font = UIFont(name: "Arial Bold Italic", size: 15)
+        return label
+    }()
+    
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,38 +150,59 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         view.addSubview(textFieldNameTask)
         textFieldNameTask.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 15, right: nil, bottom: nil, withAnchor: .top, relativeToView: titleLabel)
         
+        view.addSubview(addDate)
+        addDate.addAnchorsAndSize(width: 100, height: 15, left: 15, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: textFieldNameTask)
         
+        view.addSubview(addFinalDate)
+        addFinalDate.addAnchorsAndSize(width: 100, height: 15, left: nil, top: 10, right: 15, bottom: nil, withAnchor: .top, relativeToView: textFieldNameTask)
+        
+        view.addSubview(dateRegister)
+        dateRegister.addAnchorsAndSize(width: 100 , height: 40, left: 30, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: addDate)
+        
+        view.addSubview(dateFinish)
+        dateFinish.addAnchorsAndSize(width: 130, height: 40, left: nil, top: 10, right: 35, bottom: nil, withAnchor: .top, relativeToView: addDate)
         
         view.addSubview(addDescription)
-        addDescription.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: textFieldNameTask)
+        addDescription.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: dateRegister)
         
         view.addSubview(descriptionTextView)
         descriptionTextView.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 80, left: nil, top: 15, right: nil, bottom: nil,withAnchor: .top, relativeToView: addDescription)
         
+        view.addSubview(priorityLabel)
+        priorityLabel.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: descriptionTextView)
+        
         view.addSubview(textFieldPriority)
-        textFieldPriority.addAnchorsAndSize(width: 70, height: 40, left: 15, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: descriptionTextView)
+        textFieldPriority.addAnchorsAndSize(width: 70, height: 40, left: 30, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: descriptionTextView)
         
-      
+        view.addSubview(saveButton)
+        saveButton.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: textFieldPriority)
         
-        //view.addSubview(dateFinish)
         
     }
     @objc func showPriorityPicker(){
         view.addSubview(priorityPicker)
-        priorityPicker.addAnchorsAndCenter(centerX: true, centerY: false, width: width, height: height / 3, left: nil, top: 30, right: nil, bottom: nil, withAnchor: .top, relativeToView: textFieldPriority)
+        priorityPicker.addAnchorsAndCenter(centerX: true, centerY: false, width: width, height: height / 3, left: nil, top: 30, right: nil, bottom: nil, withAnchor: .top, relativeToView: descriptionTextView)
         
         print("show")
     }
     @objc func saveTask(){
         
+        if validateInfo() == true{
+            //dateBase.saveTask(task: task)
+        }
     }
     func validateInfo() -> Bool{
         guard let name = textFieldNameTask.text, !name.isEmpty else { return false }
-        //guard let dateRegister = dateRegister.is
+    
         guard let description = descriptionTextView.text, !description.isEmpty else {return false}
-        if priorityValidate != nil {
-            return true
-        }
+        guard let priority = textFieldPriority.text, !priority.isEmpty else {return false}
+        let dateRegister = dateRegister.date
+        let dateFinish = dateFinish.date
+        let id = 0
+        guard let priorityEnum = Priority(rawValue: priority) else {return false}
+        //nos quedamos en esta parte, falta validar el status
+        //guard let pendienteEnum = Status(rawValue: )
+       // let task = TaskModel(nameTask: name, Description: description, color: "", status: Pendiente, dateCreate: dateRegister, dateFinish: dateFinish, priority: priorityEnum, id: id)
         return true
     }
     func validateIntervalDate(date : Date) -> Bool{

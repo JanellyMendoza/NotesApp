@@ -62,6 +62,7 @@ class NotesViewController: UIViewController {
     view.backgroundColor = SColors.verdeBoton
     initUI()
     setUpLateralMenu()
+    createLocalNotification()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -146,6 +147,10 @@ class NotesViewController: UIViewController {
     default:
       break
     }
+  }
+  
+  func createLocalNotification(){
+    LocalNotificationManager.shared.scheduleNotification(title: "Tarea!", body: "Acuerdate de apagarle a los frijoles", timeInterval: 30, identifier: "tarea1")
   }
   
   
