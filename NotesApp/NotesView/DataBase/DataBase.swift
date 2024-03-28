@@ -21,8 +21,10 @@ var tasks = [TaskModel]()
     }
     
   func saveTask(task : TaskModel){
+      print("guardando \(task)")
       tasks.append(task)
       putTask(task: task)
+      
   }
   
   func getTasks() -> [TaskModel]{

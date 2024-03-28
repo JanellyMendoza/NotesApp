@@ -11,6 +11,7 @@ import Lottie
 class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     var dateBase = DataBase.shared
     var viewModel: RegisterTaskViewModel!
+    var status: Status?
     var priorityValidate: Priority? = nil
     
   
@@ -62,6 +63,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         datePicker.datePickerMode = .date
         //region
         datePicker.locale = Locale.current
+        datePicker.locale = Locale(identifier: "es_MX")
         datePicker.backgroundColor = .blue
         datePicker.minimumDate = Date()
         return datePicker
@@ -70,6 +72,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         var datePickerFinish = UIDatePicker()
         datePickerFinish .datePickerMode = .date
         datePickerFinish .locale = Locale.current
+        datePickerFinish.locale = Locale(identifier: "es_MX")
         datePickerFinish .backgroundColor = .blue
         datePickerFinish.minimumDate = Date()
         return datePickerFinish
@@ -157,7 +160,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         addFinalDate.addAnchorsAndSize(width: 100, height: 15, left: nil, top: 10, right: 15, bottom: nil, withAnchor: .top, relativeToView: textFieldNameTask)
         
         view.addSubview(dateRegister)
-        dateRegister.addAnchorsAndSize(width: 100 , height: 40, left: 30, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: addDate)
+        dateRegister.addAnchorsAndSize(width: 130 , height: 40, left: 35, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: addDate)
         
         view.addSubview(dateFinish)
         dateFinish.addAnchorsAndSize(width: 130, height: 40, left: nil, top: 10, right: 35, bottom: nil, withAnchor: .top, relativeToView: addDate)
@@ -174,6 +177,7 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         view.addSubview(textFieldPriority)
         textFieldPriority.addAnchorsAndSize(width: 70, height: 40, left: 30, top: 20, right: nil, bottom: nil, withAnchor: .top, relativeToView: descriptionTextView)
         
+        saveButton.addTarget(self, action: #selector(saveTask), for: .touchUpInside)
         view.addSubview(saveButton)
         saveButton.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 10, height: 40, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: textFieldPriority)
         
@@ -186,36 +190,53 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         print("show")
     }
     @objc func saveTask(){
+         let validationTask = validateInfo()
+        if var task = validationTask.task{
+            let dateBaseTasks = dateBase.getTasks()
+            if dateBaseTasks.count == 0{
+                dateBase.saveTask(task: task)
+                print("no hay elementos")
+            }else{
+                let lastId = dateBaseTasks.last?.id
+                task.id = lastId! + 1
+                dateBase.saveTask(task: task)
+            }
+            print(dateBaseTasks)
         
-        if validateInfo() == true{
-            //dateBase.saveTask(task: task)
+            
+        }else if let message = validationTask.message{
+            print("error al crear task \(message)")
         }
     }
-    func validateInfo() -> Bool{
-        guard let name = textFieldNameTask.text, !name.isEmpty else { return false }
+    func validateInfo() -> (task :TaskModel?,message: String?){
+        guard let name = textFieldNameTask.text, !name.isEmpty else { return (nil,"Error en el nombre")}
     
-        guard let description = descriptionTextView.text, !description.isEmpty else {return false}
-        guard let priority = textFieldPriority.text, !priority.isEmpty else {return false}
-        let dateRegister = dateRegister.date
-        let dateFinish = dateFinish.date
+        guard let description = descriptionTextView.text, !description.isEmpty else {return (nil, "Error en la descripción")}
+        guard let priority = textFieldPriority.text, !priority.isEmpty else {return (nil, "Error al seleccionar la prioridad")}
+        let newDateRegister = dateFormatter(date: dateRegister.date)
+        let newDateRegisterFinish = dateFormatter(date: dateFinish.date)
         let id = 0
-        guard let priorityEnum = Priority(rawValue: priority) else {return false}
+        guard let priorityEnum = Priority(rawValue: priority) else {return (nil,"Error al seleccionar prioridad") }
         //nos quedamos en esta parte, falta validar el status
-        //guard let pendienteEnum = Status(rawValue: )
-       // let task = TaskModel(nameTask: name, Description: description, color: "", status: Pendiente, dateCreate: dateRegister, dateFinish: dateFinish, priority: priorityEnum, id: id)
-        return true
+        let task = TaskModel(nameTask: name, Description: description, color: "", status: .Pendiente, dateCreate: newDateRegister, dateFinish: newDateRegisterFinish, priority: priorityEnum, id: id)
+        return (task, nil)
     }
-    func validateIntervalDate(date : Date) -> Bool{
-       var componentsMin = DateComponents()
-       componentsMin.minute = 5
-        let minDate : Date = Calendar.current.date(from: componentsMin) ?? Date.now
+    func dateFormatter(date: Date?)-> String{
+        let dateFormmater = DateFormatter()
+        dateFormmater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
-        if date > minDate {
-          return true
+        if let date = date{
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "yyyy-MM-dd"
+        
+            let correctDate = newDateFormatter.string(from: date)
+            return correctDate
+        }else{
+            print("Error")
         }
-        
-        return false
-      }
+        return ""
+    }
+    
 }
 extension RegisterTaskViewController {
     
