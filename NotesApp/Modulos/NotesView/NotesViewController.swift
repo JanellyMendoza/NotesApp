@@ -9,9 +9,16 @@ import UIKit
 import Lottie
 
 class NotesViewController: UIViewController {
+    
   var viewModel : NotesViewModel!
   
   var menuView = MenuView()
+
+    var containerView : UIView = {
+        var view = UIView()
+        view.backgroundColor =  .white
+        return view
+    }()
   
   
   var barHome : BarHomeView = {
@@ -60,7 +67,8 @@ class NotesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = SColors.verdeBoton
-    initUI()
+//    initUI()
+      initMainView()
     setUpLateralMenu()
     createLocalNotification()
   }
@@ -152,14 +160,22 @@ class NotesViewController: UIViewController {
   func createLocalNotification(){
     LocalNotificationManager.shared.scheduleNotification(title: "Tarea!", body: "Acuerdate de apagarle a los frijoles", timeInterval: 30, identifier: "tarea1")
   }
-  
+    func initMainView(){
+        view.addSubview(containerView)
+        containerView.addAnchorsWithMargin(0)
+        barHome.delegate = self
+        menuView.delegate = self
+        
+        view.addSubview(barHome)
+        barHome.addAnchorsAndSize(width: nil, height: 50, left: 0, top: 0, right: 0, bottom: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideMenu))
+        view.addGestureRecognizer(tap)
+    }
   
   func initUI(){
     
-    barHome.delegate = self
     
-    view.addSubview(barHome)
-    barHome.addAnchorsAndSize(width: nil, height: 50, left: 0, top: 0, right: 0, bottom: nil)
     
     view.addSubview(notesLabel)
     notesLabel.addAnchorsAndCenter(centerX: true, centerY: false, width: 100, height: 30, left: nil, top: 60, right: nil, bottom: nil)
@@ -172,8 +188,7 @@ class NotesViewController: UIViewController {
     view.addSubview(collectionViewNotes)
     collectionViewNotes.addAnchorsAndCenter(centerX: true, centerY: false, width: width - 20, height: height - 100, left: nil, top: 10, right: nil, bottom: nil, withAnchor: .top, relativeToView: notesLabel)
     
-    let tap = UITapGestureRecognizer(target: self, action: #selector(hideMenu))
-    view.addGestureRecognizer(tap)
+    
     
   }
   
@@ -189,7 +204,6 @@ class NotesViewController: UIViewController {
     tapInMenu()
   }
   
-  
 }
 
 extension NotesViewController : BarHomeViewDelegate{
@@ -202,4 +216,34 @@ extension NotesViewController : BarHomeViewDelegate{
      
     }
   }
+}
+
+extension NotesViewController : MenuViewDelegate {
+    func goToRegister2() {
+        setViewController(vc: viewModel.goToRegister())
+    }
+    
+    func goToTask() {
+        setViewController(vc: viewModel.goToTask())
+    }
+    
+    func goToSearch() {
+        setViewController(vc: viewModel.goToSearch())
+        }
+    
+    func setViewController(vc : UIViewController){
+        DispatchQueue.main.async { [self] in
+            for views in containerView.subviews {
+                views.removeFromSuperview()
+            }
+        }
+        
+        DispatchQueue.main.async { [self] in
+            containerView.addSubview(vc.view)
+            vc.view.addAnchorsWithMargin(0)
+        }
+        
+    }
+    
+    
 }

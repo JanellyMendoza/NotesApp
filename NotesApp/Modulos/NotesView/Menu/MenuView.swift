@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
-
+protocol MenuViewDelegate {
+    
+    func goToTask()
+    func goToSearch()
+    func goToRegister2()
+}
 
 enum MenuCases : String, CaseIterable{
   case 📱TAREAS
@@ -22,6 +27,7 @@ enum MenuCases : String, CaseIterable{
 class MenuView : UIView{
   
   var selectedButton: UIButton?
+  var delegate : MenuViewDelegate?
   
   var backView : UIView = {
     var view = UIView()
@@ -135,16 +141,20 @@ class MenuView : UIView{
   
   @objc func goTasks(_ sender: UIButton){
     updateSelectedButton(sender)
+    delegate?.goToTask()
   }
   
   @objc func goRegister(_ sender: UIButton){
     updateSelectedButton(sender)
     print("goRegister")
+      delegate?.goToRegister2()
+      
   }
   
   @objc func goSearch(_ sender: UIButton){
     updateSelectedButton(sender)
     print("goSearch")
+      delegate?.goToSearch()
   }
   
   @objc func goHistory(_ sender: UIButton){

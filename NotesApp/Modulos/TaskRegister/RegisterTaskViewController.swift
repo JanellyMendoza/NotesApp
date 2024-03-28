@@ -200,9 +200,6 @@ class RegisterTaskViewController: UIViewController, UIPickerViewDataSource, UIPi
         let dateFinish = dateFinish.date
         let id = 0
         guard let priorityEnum = Priority(rawValue: priority) else {return false}
-        //nos quedamos en esta parte, falta validar el status
-        //guard let pendienteEnum = Status(rawValue: )
-       // let task = TaskModel(nameTask: name, Description: description, color: "", status: Pendiente, dateCreate: dateRegister, dateFinish: dateFinish, priority: priorityEnum, id: id)
         return true
     }
     func validateIntervalDate(date : Date) -> Bool{

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BA9474E2BB503840088C03E /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9474D2BB503840088C03E /* TaskViewModel.swift */; };
+		5BA947502BB503B10088C03E /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9474F2BB503B10088C03E /* TaskViewController.swift */; };
+		5BA947522BB503D70088C03E /* TaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA947512BB503D70088C03E /* TaskCoordinator.swift */; };
+		5BA947552BB5049C0088C03E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA947542BB5049C0088C03E /* SearchViewModel.swift */; };
+		5BA947572BB504B20088C03E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA947562BB504B20088C03E /* SearchViewController.swift */; };
+		5BA947592BB504C70088C03E /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA947582BB504C70088C03E /* SearchCoordinator.swift */; };
 		7128C6F307A65BA5EC011070 /* Pods_NotesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C744BD775B9C5EE89AA4C13E /* Pods_NotesApp.framework */; };
 		9FA4FF7E2B96ACAC000AF902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF7D2B96ACAC000AF902 /* AppDelegate.swift */; };
 		9FA4FF802B96ACAC000AF902 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4FF7F2B96ACAC000AF902 /* SceneDelegate.swift */; };
@@ -38,6 +44,12 @@
 
 /* Begin PBXFileReference section */
 		3B7F4A1EA4DA00ED347FC263 /* Pods-NotesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.debug.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5BA9474D2BB503840088C03E /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		5BA9474F2BB503B10088C03E /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		5BA947512BB503D70088C03E /* TaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCoordinator.swift; sourceTree = "<group>"; };
+		5BA947542BB5049C0088C03E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		5BA947562BB504B20088C03E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		5BA947582BB504C70088C03E /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		6A620F62AF14AEB565374754 /* Pods-NotesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesApp.release.xcconfig"; path = "Target Support Files/Pods-NotesApp/Pods-NotesApp.release.xcconfig"; sourceTree = "<group>"; };
 		9FA4FF7A2B96ACAC000AF902 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA4FF7D2B96ACAC000AF902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +105,37 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5BA947492BB5003C0088C03E /* Modulos */ = {
+			isa = PBXGroup;
+			children = (
+				5BA947532BB504050088C03E /* SearchView */,
+				9FA4FF962B96AFBC000AF902 /* NotesView */,
+				5BA9474A2BB501BA0088C03E /* TasksView */,
+				9FB03E6D2B9FE63F007D67E6 /* TaskRegister */,
+			);
+			path = Modulos;
+			sourceTree = "<group>";
+		};
+		5BA9474A2BB501BA0088C03E /* TasksView */ = {
+			isa = PBXGroup;
+			children = (
+				5BA9474D2BB503840088C03E /* TaskViewModel.swift */,
+				5BA9474F2BB503B10088C03E /* TaskViewController.swift */,
+				5BA947512BB503D70088C03E /* TaskCoordinator.swift */,
+			);
+			path = TasksView;
+			sourceTree = "<group>";
+		};
+		5BA947532BB504050088C03E /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				5BA947542BB5049C0088C03E /* SearchViewModel.swift */,
+				5BA947562BB504B20088C03E /* SearchViewController.swift */,
+				5BA947582BB504C70088C03E /* SearchCoordinator.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
 		78834D8CDAFFB43197A59665 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,14 +165,15 @@
 		9FA4FF7C2B96ACAC000AF902 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
-				BFCA85A42BB3C16900B7DEBC /* LocalizableStrings */,
-				BFCA859D2BB3BC4800B7DEBC /* NotificationManagers */,
-				BF86F7362BA2A378006B3157 /* Menu */,
 				9FA4FF7D2B96ACAC000AF902 /* AppDelegate.swift */,
 				9FA4FF942B96AD1F000AF902 /* AppCoordinator.swift */,
-				9FA4FF912B96ACC4000AF902 /* Uitls */,
 				9FA4FF7F2B96ACAC000AF902 /* SceneDelegate.swift */,
-				9FA4FF962B96AFBC000AF902 /* NotesView */,
+				5BA947492BB5003C0088C03E /* Modulos */,
+				F88405602B96C43F00DF1F55 /* Model */,
+				F88405672B96CA8B00DF1F55 /* DataBase */,
+				BFCA85A42BB3C16900B7DEBC /* LocalizableStrings */,
+				BFCA859D2BB3BC4800B7DEBC /* NotificationManagers */,
+				9FA4FF912B96ACC4000AF902 /* Uitls */,
 				9FA4FF812B96ACAC000AF902 /* ViewController.swift */,
 				9FA4FF832B96ACAC000AF902 /* Main.storyboard */,
 				9FA4FF862B96ACAF000AF902 /* Assets.xcassets */,
@@ -151,13 +195,11 @@
 		9FA4FF962B96AFBC000AF902 /* NotesView */ = {
 			isa = PBXGroup;
 			children = (
-				F88405672B96CA8B00DF1F55 /* DataBase */,
-				F88405602B96C43F00DF1F55 /* Model */,
+				BF86F7362BA2A378006B3157 /* Menu */,
 				F884055B2B96C0AD00DF1F55 /* Notes */,
+				9FA4FF972B96B006000AF902 /* NotesViewController.swift */,
 				9FA4FF992B96B017000AF902 /* NotesViewModel.swift */,
 				9FA4FF9B2B96B025000AF902 /* NotesCoordinator.swift */,
-				9FA4FF972B96B006000AF902 /* NotesViewController.swift */,
-				9FB03E6D2B9FE63F007D67E6 /* TaskRegister */,
 			);
 			path = NotesView;
 			sourceTree = "<group>";
@@ -348,13 +390,17 @@
 				F884056B2B96CDDB00DF1F55 /* DataBaseKeys.swift in Sources */,
 				9FA4FF822B96ACAC000AF902 /* ViewController.swift in Sources */,
 				9FA4FF9A2B96B017000AF902 /* NotesViewModel.swift in Sources */,
+				5BA947592BB504C70088C03E /* SearchCoordinator.swift in Sources */,
 				BF86F7382BA2A396006B3157 /* MenuView.swift in Sources */,
 				9FA4FF7E2B96ACAC000AF902 /* AppDelegate.swift in Sources */,
 				9FA4FF982B96B006000AF902 /* NotesViewController.swift in Sources */,
+				5BA947522BB503D70088C03E /* TaskCoordinator.swift in Sources */,
+				5BA947572BB504B20088C03E /* SearchViewController.swift in Sources */,
 				F88405692B96CAAC00DF1F55 /* DataBase.swift in Sources */,
 				F88405622B96C46200DF1F55 /* TaskModel.swift in Sources */,
 				9FA4FF952B96AD1F000AF902 /* AppCoordinator.swift in Sources */,
 				BF43DDD82BB263EB003A12D4 /* BarHomeView.swift in Sources */,
+				5BA9474E2BB503840088C03E /* TaskViewModel.swift in Sources */,
 				F884055D2B96C0F900DF1F55 /* NotesCollectionView.swift in Sources */,
 				9FA4FF802B96ACAC000AF902 /* SceneDelegate.swift in Sources */,
 				9FB03E6F2B9FE6DE007D67E6 /* RegisterTaskViewModel.swift in Sources */,
@@ -362,6 +408,8 @@
 				F884055F2B96C11800DF1F55 /* NotesCollectionViewCell.swift in Sources */,
 				F88405662B96C59A00DF1F55 /* Priority.swift in Sources */,
 				9FB03E732B9FE703007D67E6 /* RegisterTaskCoordinator.swift in Sources */,
+				5BA947502BB503B10088C03E /* TaskViewController.swift in Sources */,
+				5BA947552BB5049C0088C03E /* SearchViewModel.swift in Sources */,
 				9FA4FF932B96ACD2000AF902 /* Utils.swift in Sources */,
 				F88405642B96C58900DF1F55 /* Status.swift in Sources */,
 				9FB03E712B9FE6EE007D67E6 /* RegisterTaskViewController.swift in Sources */,

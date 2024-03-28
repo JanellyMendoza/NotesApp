@@ -23,11 +23,23 @@ class NotesCoordinator: Coordinator {
         navigationController.setViewControllers([view], animated: true)
     }
   
-  func goToRegister(){
+  func goToRegister()-> UIViewController{
       let coordinatorRegister = RegisterTaskCoordinator(navigationController: navigationController)
       childCoordinator.append(coordinatorRegister)
-      coordinatorRegister.startCoordinator()
+      return coordinatorRegister.startCoordinator()
   }
+    
+    func goToSearch()-> UIViewController{
+        let coordinatorSearch = SearchCoordinator(navigationController: navigationController)
+        childCoordinator.append(coordinatorSearch)
+        return coordinatorSearch.startCoordinator()
+    }
+    
+    func goToTask() -> UIViewController{
+        let coordinatorTask = TaskCoordinator(navigationController: navigationController)
+        childCoordinator.append(coordinatorTask)
+        return coordinatorTask.startCoordinator()
+    }
     
     
 }
